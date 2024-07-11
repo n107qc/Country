@@ -82,3 +82,17 @@ def make_density(value):
 
 df["Service"] = df["Service"].apply(make_density)
 df.info()
+
+def make_density(value):
+    if isinstance(value, str):
+        value = float(value.replace(",", "."))
+    return value
+
+df["Phones (per 1000)"] = df["Phones (per 1000)"].apply(make_density)
+df.info()
+
+
+def Literacy(Literacy):
+    if Literacy[0] == '%':
+        result = float(Literacy[0])
+    return result
