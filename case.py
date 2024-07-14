@@ -1,4 +1,6 @@
-import pandas as pd
+import pandas as pd 
+import matplotlib.pyplot as plt
+
 #місце для твого коду
 df = pd.read_csv("countries of the world.csv")
 df.info()
@@ -92,7 +94,39 @@ df["Phones (per 1000)"] = df["Phones (per 1000)"].apply(make_density)
 df.info()
 
 
-def Literacy(Literacy):
-    if Literacy[0] == '%':
-        result = float(Literacy[0])
-    return result
+def literacy(value):
+    if isinstance(value, str):
+        value = float(value.replace(",", "."))
+    return value 
+
+df['Literacy (%)'] = df['Literacy (%)'].apply(literacy)
+df.info()
+
+def literacy(value):
+    if isinstance(value, str):
+        value = float(value.replace(",", "."))
+    return value 
+
+df['Arable (%)'] = df['Arable (%)'].apply(literacy)
+df.info()
+
+def literacy(value):
+    if isinstance(value, str):
+        value = float(value.replace(",", "."))
+    return value 
+
+df['Crops (%)'] = df['Crops (%)'].apply(literacy)
+df.info()
+
+def literacy(value):
+    if isinstance(value, str):
+        value = float(value.replace(",", "."))
+    return value 
+
+df['Other (%)'] = df['Other (%)'].apply(literacy)
+df.info()
+
+df["Other (%)"].fillna(-1,inplace=True)
+df.info()
+
+df.to_csv('cleaned.csv')
